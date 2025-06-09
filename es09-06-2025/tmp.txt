@@ -1,0 +1,5 @@
+;scrivere una procedura assembly che riceve un vettore di word V ed un vettore di double word W, con V avente lunghezza n e W n-1, e tre paramentri
+;a , b e k
+;ciascun elemento di W è calcolato come segue:
+; w[i] = 0 se a*V[i]+b*V[i+1]>k
+;w[i] = 1 altrimenti
