@@ -1,0 +1,27 @@
+RTL
+ μ1   IRx → MAR, AC → T2;
+ μ2   M[MAR] → MBR, INC(MAR) → MAR, 0 → AC;
+ μ3   MBR → T1;
+ 1: if(OR(T1) == 1) then
+ μ4       M[MAR] → MBR, T2 → A;
+ μ5       MBR → B;
+       if(B0 == 0) then
+ μ6           A - B → T3;
+           if(T331 == 1) then
+ μ7               AC → A, 1 → MBR;
+ μ8               A + B → AC, MBR → M[MAR], INC(MAR) → MAR, DEC(T1) → T1, goto 1
+           else
+ μ9               INC(MAR) → MAR, DEC(T1) → T1, goto 1
+           fi
+       else
+ μ6           A - B → T3;
+           if(AND(NOT(T331), OR(T3)) == 1) then
+ μ10               AC → A, -1 → MBR;
+ μ8               A + B → AC, MBR → M[MAR], INC(MAR) → MAR, DEC(T1) → T1, goto 1
+           else
+ μ9               INC(MAR) → MAR, DEC(T1) → T1, goto 1
+           fi
+       fi
+   else
+ μ0       0;
+   fi

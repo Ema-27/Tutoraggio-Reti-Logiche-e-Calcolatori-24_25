@@ -1,0 +1,30 @@
+RTL
+
+
+ μ1   IRx → MAR, AC → B;
+ μ2   M[MAR] → MBR, INC(MAR) → MAR;
+ μ3   MBR → T1;
+ μ4   T1 → T2, SHR(T1) → T1;
+ 1: if(OR(T1) == 1) then
+ μ5       M[MAR] → MBR;
+ μ6       MBR → A;
+       if(A31 == 1) then
+ μ7           A + B → MBR;
+ μ8           MBR → M[MAR], INC(MAR) → MAR, DEC(T1) → T1, DEC(T2) → T2, goto 1;
+       else
+ μ9           INC(MAR) → MAR, DEC(T1) → T1, DEC(T2) → T2, goto 1;
+       fi
+   else
+ 2:     if(OR(T2) == 1) then
+ μ5           M[MAR] → MBR;
+ μ6           MBR → A;
+           if(A31 == 0) then
+ μ10               A - B → MBR;
+ μ11               MBR → M[MAR], INC(MAR) → MAR, DEC(T2) → T2, goto 2;
+           else
+ μ12               INC(MAR) → MAR, DEC(T2) → T2, goto 2;
+           fi
+        else
+ μ0            0;
+        fi
+   fi
