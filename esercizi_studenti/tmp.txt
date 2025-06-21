@@ -1,0 +1,10 @@
+;Scrivere una procedura Assembly che riceve un vettore di word A e un intero k
+;La procedura verifica se nell'array è presente una sequenza di 3 elementi contigui di
+;segno alterno la cui somma sia maggiore di k.
+;In tal caso la procedura restituirà 1, altrimenti 0.
+
+;scrivere una procedura assembly che riceve un vettore di word V ed un vettore di double word W, con V avente lunghezza n e W n-1, e tre paramentri
+;a , b e k
+;ciascun elemento di W è calcolato come segue:
+; w[i] = 0 se a*V[i]+b*V[i+1]>k
+;w[i] = 1 altrimenti

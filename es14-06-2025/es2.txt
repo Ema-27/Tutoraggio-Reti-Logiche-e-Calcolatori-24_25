@@ -1,0 +1,43 @@
+MU1     IRX->MAR
+MU2     M[MAR]->MBR, INC(MAR)->MAR
+MU3     MBR->T1, 0->T2, 4->B
+1:      IF OR(T1)==1 THEN
+MU4         M[MAR]->MBR
+MU5         MBR->AC
+2:          IF AC0 ==0 THEN 
+MU6             MBR ->A, INC(T2)->T2
+MU7             SHR(A)->A
+MU8             A-B->MBR
+MU9             MBR->M[MAR], INC(MAR)->MAR, DEC(T1) GOTO1;
+            ELSE
+MU10                INC(MAR)->MAR, DEC(T1)->T1, GOTO1;
+            FI
+        ELSE
+MU11            T2->AC
+        FI
+
+
+modifiche architetturali
+
+aggiunto shift A
+caricamento di 4 in B
+azzeramento T2
+aggiunta segnale AC0, per bit meno significatico di AC
+aggiunta incremento al registro MAR
+
+T1
+AT1 K0T1 K1T1
+0     -    -  LETTURA
+
+1    0     0     INCREMENTO
+
+1    1     0     DECREMENTO
+
+1    1     1    SCRITTURA DA MBR
+
+B
+AB    KB
+
+0      -	LETTURA
+1      0        SCRITTURA DA BUS
+1      1        SCRIVO V
