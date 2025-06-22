@@ -16,7 +16,7 @@ else
 			exit 1
 		fi
 	fi
-	ld -m elf_i386 -o $1 $1.o $1_proc.o utils.o -o $1 2>> error.log
+	ld -m elf_i386 -o $1 $1.o $1_proc.o utils.o -o $1 2>&1 | grep -v 'warning' | grep -v 'NOTE'
 	cat error.log
 	./$1
 fi
