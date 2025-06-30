@@ -26,4 +26,5 @@ modifiche architetturali
 aggiunto shift t1,
 azzeramento accumulatore
 aggiunta segnale T231
+...
 
