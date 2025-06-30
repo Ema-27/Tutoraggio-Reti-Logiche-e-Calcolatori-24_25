@@ -1,0 +1,22 @@
+MU1     IRX->IND1, 0->AC
+MU2     IND1->MAR, INC(IND1)->IND1
+MU3     M[MAR]->MBR, IND1->B
+MU4     MBR->TI
+MU5     SHR(T1)->T1
+MU6     T1->A
+MU7     A+B->IND2
+    1: IF(OR(T1)==1)THEN
+MU8     IND2->MAR
+MU9     M[MAR]->MBR, IND1->MAR
+MU10    MBR->A, M[MAR]->MBR
+MU11    MBR->B
+MU12    A-B->T2
+        IF(T231 =1) THEN        //V[N/2+I]<N  A-B<0
+MU13        A+B->MBR, INC(AC)->AC
+        ELSE
+MU14         0->MBR
+        FI
+MU15    MBR->M[MAR], INC(IND1)->IND1, INC(IND2)->IND2, DEC(T1)->TI, GOTO1;
+        ELSE
+MU0      0
+        FI
