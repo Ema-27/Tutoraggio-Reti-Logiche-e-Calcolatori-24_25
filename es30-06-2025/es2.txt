@@ -20,3 +20,10 @@ MU15    MBR->M[MAR], INC(IND1)->IND1, INC(IND2)->IND2, DEC(T1)->TI, GOTO1;
         ELSE
 MU0      0
         FI
+
+modifiche architetturali
+
+aggiunto shift t1,
+azzeramento accumulatore
+aggiunta segnale T231
+
