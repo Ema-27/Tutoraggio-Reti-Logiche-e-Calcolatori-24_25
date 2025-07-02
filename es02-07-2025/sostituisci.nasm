@@ -22,7 +22,7 @@ _start:
     xor esi, esi ;indice 
 
 .loop:
-    cmp esi, nv
+    cmp esi, 8
     jge .end
     mov ax, [V + esi*2]
     printw ax
