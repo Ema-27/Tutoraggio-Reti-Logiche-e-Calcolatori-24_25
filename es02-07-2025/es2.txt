@@ -1,0 +1,44 @@
+-B->B //per negare un numero
+
+pseudo codice:
+    1)estraggo numero di elementi e 
+    lo metto in T1
+
+    2)prelevo l'indirizzo dell'elemento da
+    sommare che si trova in V[i]
+
+    3)una volta estratto l'elemento verifico 
+    che sia positivo o negativo, 
+    caso negativo-->lo negativo
+
+    4)faccio la somma
+
+    5)dopo aver visto tutti gli elementi
+    salvo la somma in accumulatore
+
+
+MU1     IRX->MAR, 0->A
+MU2     M[MAR]->MBR, INC(MAR)->MAR
+MU3     MAR->IND, MBR->T1
+1:  IF OR(T1)=1 THEN
+MU4     IND->MAR, INC(IND)->IND
+MU5     M[MAR]->MBR
+MU6     MBR->MAR
+MU7     M[MAR]->MBR
+MU8     MBR->B
+            IF B31 =1 THEN
+MU9                -B->B
+MU10                A+B->A, DEC(T1)->T1 GOTO1
+            ELSE
+MU10                A+B->A, DEC(T1)->T1, GOTO1
+            FI 
+    ELSE
+MU0       A->AC 
+    FI
+
+MODIFICHE ARCHITETTURALI
+
+AZZERAMENTO DI A 
+INCREMENTO DEL MAR
+AGGIUNTA SEGNALE DI B31
+SPOSTAMENTO DI A IN AC
