@@ -9,7 +9,7 @@ MU 1 IRX->MAR, 24->T1, 0->B
         IF AC0 == 1 THEN    
             MU2 M[MAR]->MBR, INC(MAR)->MAR
             MU3 MBR->A 
-        MU4 A+B->B, DEC(T1)->TI, SHR(AC)->AC GOTO1
+            MU4 A+B->B, DEC(T1)->TI, SHR(AC)->AC GOTO1
         ELSE
             MU5 INC(MAR)->MAR, DEC(T1)->1, SHR(AC)->AC GOTO1
         FI
