@@ -1,0 +1,24 @@
+a =   0 1   0  0  0 1   0  1
+
+V = [10,16,-13,5,-8,62,-32,-1]
+
+v[i] attivo se a[i]=1
+
+MU 1 IRX->MAR, 24->T1, 0->B
+1: IF OR(T1)==1 THEN
+        IF AC0 == 1 THEN    
+            MU2 M[MAR]->MBR, INC(MAR)->MAR
+            MU3 MBR->A 
+        MU4 A+B->B, DEC(T1)->TI, SHR(AC)->AC GOTO1
+        ELSE
+            MU5 INC(MAR)->MAR, DEC(T1)->1, SHR(AC)->AC GOTO1
+        FI
+    ELSE
+        MU6 B->AC
+    FI
+
+
+SHIFT AC
+AGGIUNTA DEL SEGNALE AC0
+AZZERAMENTO DI B
+INCREMENTO DEL MAR
