@@ -1,4 +1,4 @@
-mu1 IRX->MAR, ACC->B
+MU1 IRX->MAR, ACC->B
 MU2 M[MAR]->MBR, INC(MAR)->MAR
 MU3 MBR->A, MAR->IND1
 MU4 A-B->T1         //MI FERMO 3 EL. PRIMA
@@ -9,12 +9,12 @@ MU7     IND1->MAR, INC(IND1)->IND1
 MU8     M[MAR]->MBR
 MU9     MBR->B
 MU10    IND2->MAR, INC(IND2)->IND2
-MU8     M[MAR]->MBR
-MU11    MBR->A 
-MU12    A-B->A
+MU11     M[MAR]->MBR
+MU12    MBR->A 
+MU13    A-B->A
         IF A31 == 1 THEN
-MU13        1->ACC      //ZIR=1
+MU14        1->ACC      //ZIR=1
         ELSE
-MU14        DEC(T1)->T1, GOTO 1
+MU15        DEC(T1)->T1, GOTO 1
     ELSE
-MU15    0->ACC          //ZIR=1
+MU16    0->ACC          //ZIR=1
