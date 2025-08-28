@@ -1,0 +1,17 @@
+IRx →MAR,0→ACC;
+M[MAR]→MBR,INC(MAR)→MAR;
+MBR→T1,M[MAR]→MBR,INC(MAR)→MAR;
+MBR→B,M[MAR]→MBR,INC(MAR)→MAR,DEC(T1)→T1;
+MBR→A,DEC(T1)→T1;
+c: while OR(T1) == 1 do
+        M[MAR]→MBR,INC(MAR)→MAR;
+        A−B→B;
+        A→T2;
+        MBR→A;
+        A−B→B;
+        if B31 == 0 then
+            INC(ACC)→ACC,T2→B,DEC(T1)→T1,goto c;
+        else
+        T2→B,DEC(T1)→T1,goto c;
+else
+    fi;
