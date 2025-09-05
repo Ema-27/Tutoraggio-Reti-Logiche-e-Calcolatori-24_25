@@ -1,0 +1,42 @@
+  0000  0
+  0001  1
+  0010  2
+  0011  3
+  0100  4
+
+  MU1 IRX->MAR, 0->A
+  MU2 M[MAR]->MBR, INC(MAR)->MAR
+  MU3 MBR->T1
+  MU4 SHR(T1)->T1, T1->T2
+  1: IF OR(T1)==1 THEN
+        MU2 M[MAR]->MBR, INC(MAR)->MAR
+        IF MBR0==0 THEN     //verifico se è pari
+            MU5 MBR->B
+            MU6 A+B->A, DEC(T1)->T1 GOTO 1;
+        ELSE
+            MU7 DEC(T1)->T1 GOTO 1;
+        FI
+    ELSE
+        MU0 0;
+    FI
+2: IF OR(T2)==1 THEN
+        MU2 M[MAR]->MBR, INC(MAR)->MAR
+        IF MBR0==1 THEN
+            MU5 MBR->B
+            MU8 A-B->A, DEC(T2)->T2 GOTO 2
+        ELSE   
+            MU9 DEC(T2)->T2 GOTO 2
+        FI
+    ELSE
+        MU10 A->AC
+    FI
+
+
+MODIFICHE ARCHITETTURALE
+        
+AZZERAMENTO DI A 
+INCREMENTO DEL MAR 
+AGGIUNTA SEGNALE MBR0
+SPOSTAMENTO DI A IN ACC
+DECREMENTO DI T1,T2
+SHIFT DI T1
